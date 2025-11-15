@@ -1,29 +1,39 @@
-// h1 
-
+  
+const red = document.getElementById("red");
+const amber = document.getElementById("amber");
+const green = document.getElementById("green");
 
  
-// trafick light
+function setLight(light) {
+    red.classList.remove("on");
+    amber.classList.remove("on");
+    green.classList.remove("on");
 
-function changeColour(colour, delay, post){
-    return new Promise((resolve,reject)=>{
-        setTimeout(()=>{
-            let div = document.querySelector("div");
-            let p = document.querySelector("p");
-             div.style.backgroundColor = colour;
-             p.innerText = post;
-             resolve("colour changed")  
-         },delay)
-         
-    });
+    if (light === "red") red.classList.add("on");
+    if (light === "amber") amber.classList.add("on");
+    if (light === "green") green.classList.add("on");
 }
 
-async function show() {
-    await changeColour("red",1000, "Stop!");
-    await changeColour("yellow",5000, "reday");
-          changeColour("rgb(18, 234, 18)",8000, "Go")
  
+function startTraffic() {
+    setLight("red");
+
+    setTimeout(() => {
+        setLight("amber");
+    }, 5000);
+
+    setTimeout(() => {
+        setLight("green");
+    }, 8000);
+
+    
+    setInterval(() => {
+        setLight("red");
+
+        setTimeout(() => setLight("amber"), 5000);
+        setTimeout(() => setLight("green"), 8000);
+
+    }, 6000);
 }
 
-show();
- 
-
+startTraffic();
