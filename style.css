@@ -1,21 +1,97 @@
-body{
-    text-align: center;
-    margin-top: 20px;
+:root{
+  --bg: #0f1724;
+  --housing: #222831;
+  --glass: #111214;
+  --size: 180px;
 }
 
-div{
-    text-align: center;
-    margin: auto;
-    width: 100px;
-    height: 100px;
-    border: 2px solid rgb(20, 20, 20);
-    border-radius: 50%;
-    background-color:rgb(49, 50, 49);
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(180deg,var(--bg),#081019 80%);
+  font-family:system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial;
+  color:#e6eef8;
+  padding:24px;
 }
- 
-p{
-    padding: 20px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    color: rgb(255, 255, 255);
+
+.container{
+  display:flex;
+  gap:36px;
+  align-items:center;
+  flex-direction:column;
 }
- 
+
+/* Traffic housing */
+.traffic{
+  width:calc(var(--size) * 0.6);
+  background:linear-gradient(180deg,#1e2226,#111317);
+  padding:20px 18px;
+  border-radius:28px;
+  box-shadow: 0 12px 30px rgba(2,6,23,0.7), inset 0 2px 6px rgba(255,255,255,0.02);
+}
+
+.pole{
+  height:220px;
+  width:12px;
+  background:#222;
+  margin:14px auto 0;
+  border-radius:6px;
+  box-shadow:0 8px 18px rgba(0,0,0,0.6);
+}
+
+.light{
+  display:flex;
+  gap:14px;
+  flex-direction:column;
+  align-items:center;
+  padding:8px 4px;
+}
+
+.bulb{
+  width:calc(var(--size) * 0.29);
+  height:calc(var(--size) * 0.29);
+  border-radius:50%;
+  background:var(--glass);
+  box-shadow: inset 0 -6px 18px rgba(0,0,0,0.7), 0 6px 18px rgba(0,0,0,0.6);
+  transition:all 300ms ease;
+  position:relative;
+}
+
+/* Glow effect */
+.bulb.on{
+  filter:brightness(1.2);
+}
+
+.bulb.red.on{
+  background:red;
+  box-shadow:0 0 25px red;
+}
+
+.bulb.amber.on{
+  background:yellow;
+  box-shadow:0 0 25px yellow;
+}
+
+.bulb.green.on{
+  background:rgb(0, 255, 0);
+  box-shadow:0 0 25px rgb(0, 255, 0);
+}
+
+.footer{
+     position: absolute;
+      bottom: 20px;
+      text-align: center;
+      width: 100%;
+      font-size: 18px;
+      color: #00eaff;
+      font-weight: 600;
+      font-family: 'Poppins', sans-serif;
+}
+
+@media (min-width:640px){
+  .container{flex-direction:row}
+}
